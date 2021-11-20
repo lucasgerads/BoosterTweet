@@ -1,0 +1,8 @@
+/credentials.py
+/__pycache__
+/bin
+/Impfquotenmonitoring.xlsx
+/include
+/lib
+/pyvenv.cfg
+*.swp
