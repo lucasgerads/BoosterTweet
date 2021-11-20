@@ -14,13 +14,9 @@ xl = pd.ExcelFile('Impfquotenmonitoring.xlsx')
 df = xl.parse('Impfungen_proTag')
 df = df.dropna()
 df = df[:-1] #drop last row
-# print(df[1:])
-#df = df[2:].astype(int)
 df['Datum'] = pd.to_datetime(df['Datum'])
 df['ZweitimpfungSum'] = df['Zweitimpfung'].cumsum()
 df['AuffrischimpfungSum'] = df['Auffrischimpfung'].cumsum()
-
-#print(df)
 
 sixMonths = dateutil.relativedelta.relativedelta(months=6)
 
@@ -32,7 +28,6 @@ boostedNow = df['AuffrischimpfungSum'].iloc[-1]
 differenceOfShame = fullyVaxxedSixMonthsAgo - boostedNow
 
 tweet = "Vor 6 Monaten waren {:,} Menschen vollständig geimpft, bis heute haben {:,} Menschen eine Auffrischung bekommen. Wir liegen {:,} Impfungen zurück.".format(int(fullyVaxxedSixMonthsAgo) , int(boostedNow) ,int(differenceOfShame))
-
 
 print(tweet) 
 
